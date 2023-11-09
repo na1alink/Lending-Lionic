@@ -54,11 +54,15 @@ svg path {
 }
 
 body {
-	min-width: 1200px;
+	min-width: 320px;
 	font-family: 'OpenSans', sans-serif;
 	font-weight: 400;
 	line-height: normal;
 	color: #1c1c1c;
+}
+
+:root {
+	--gap: 30px;
 }
 
 /* glob */
@@ -125,9 +129,10 @@ body {
 }
 
 .container {
-	width: 1200px;
+	max-width: 1200px;
 	padding: 0 15px;
 	margin: 0 auto;
+	width: 100%;
 }
 
 .section-title {
@@ -297,12 +302,30 @@ body {
 	margin-bottom: 54px;
 }
 
+.services__list {
+	--offsets: 3;
+	gap: var(--gap);
+	flex-wrap: wrap;
+}
+
+@media (max-width: 1024px) {
+	.services__list {
+		--offsets: 2;
+	}
+}
+
+@media (max-width: 768px) {
+	.services__list {
+		--offsets: 1;
+	}
+}
+
 .services__item {
 	flex-direction: column;
 	align-items: center;
 	padding: 60px 30px;
 
-	width: 270px;
+	width: calc((100% - (var(--gap) * var(--offsets))) / (var(--offsets) + 1));
 
 	border-radius: 5px;
 	border: 1px solid #e4e4e4;
@@ -313,10 +336,6 @@ body {
 .services__item:hover {
 	border-color: #3172b9;
 	background-color: #3172b9;
-}
-
-.services__item:not(:nth-child(4n)) {
-	margin-right: 30px;
 }
 
 .services__item-icon {
@@ -366,23 +385,21 @@ body {
 }
 
 .articles__list {
+	--offsets: 1;
+	gap: var(--gap);
+
 	flex-wrap: wrap;
 }
 
 .articles__item {
-	width: 570px;
-	margin-bottom: 30px;
-}
-
-.articles__item:not(:nth-child(2n)) {
-	margin-right: 30px;
+	width: calc((100% - (var(--gap) * var(--offsets))) / (var(--offsets) + 1));
 }
 
 .blog__preview {
 	overflow: hidden;
 	border-radius: 5px;
 	border: 1px solid #e4e4e4;
-	/* transition: color 0.3s ease-in-out; */
+	transition: color 0.3s ease-in-out;
 }
 
 .blog__preview-link {
@@ -481,19 +498,22 @@ body {
 	border-bottom: 1px solid #dadada;
 }
 
+.clients__list {
+	--offsets: 2;
+	flex-wrap: wrap;
+	gap: var(--gap);
+}
+
 .clients__item {
 	flex-direction: column;
 
-	width: 370px;
+	width: calc((100% - (var(--gap) * var(--offsets))) / (var(--offsets) + 1));
+
 	padding: 50px 36px;
 	padding-bottom: 30px;
 
 	border-radius: 5px;
 	border: 1px solid #e4e4e4;
-}
-
-.clients__item:not(:nth-child(3n)) {
-	margin-right: 30px;
 }
 
 .clients__item-descr {
@@ -552,18 +572,19 @@ body {
 	font-style: normal;
 }
 
+.contacts__list {
+	--offsets: 2;
+	flex-wrap: wrap;
+	gap: var(--gap);
+}
 .contacts__item {
 	flex-direction: column;
-	width: 370px;
+	width: calc((100% - (var(--gap) * var(--offsets))) / (var(--offsets) + 1));
 	padding-top: 48px;
 
 	background-position: left top;
 	background-repeat: no-repeat;
 	background-size: 29px 29px;
-}
-
-.contacts__item:not(:nth-child(3n)) {
-	margin-right: 30px;
 }
 
 .contacts__item-address {
